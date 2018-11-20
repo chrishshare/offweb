@@ -1,0 +1,61 @@
+{% extends 'common/base.html' %}
+
+{% block title %}首页{% endblock %}
+
+
+{% block content %}
+{#    banner轮播图片  #}
+    <div class="jumbotron">
+        {% include 'common/banner.html' %}
+    </div>
+
+{#    新品推荐  #}
+    <div class="container">
+        <div class="prod-title">
+            <div>
+                <img src="{{ MEDIA_URL }}images/t1.png">
+            </div>
+            <div class="row">
+                {% for pl in new_product_list %}
+                    <div class="col-lg-3 col-md-3 col-sm-2 prodimg">
+                        <figure>
+                                <a href="{% url 'productdetailv2' typeid=pl.typeid productcode=pl.productcode %}">
+                                    <img src="{{ MEDIA_URL }}{{ pl.image }}">
+                                </a>
+                                <figcaption>
+                                    <div>
+                                        <a href="{% url 'productdetailv2' typeid=pl.typeid productcode=pl.productcode %}">{{ pl.prodductname }}</a>
+                                    </div>
+    {#                                <div>{{ pl.productdesc }}</div>#}
+                                </figcaption>
+                        </figure>
+                    </div>
+                {% endfor %}
+        </div>
+    </div>
+
+{#    产品系列  #}
+        <div class="prod-title">
+            <div>
+                <img src="{{ MEDIA_URL }}images/t2.png">
+            </div>
+            <div class="row">
+                {% for cpl in cat_product_list %}
+                    <div class="col-lg-3 col-md-3 col-sm-2 prodimg">
+                    <figure>
+                            <a href="{% url 'prodcenter' typeid=cpl.typeid %}">
+                                <img src="{{ MEDIA_URL }}{{ cpl.image }}">
+                            </a>
+                            <figcaption>
+                                <div>
+                                    <a href="{% url 'prodcenter' typeid=cpl.typeid %}">{{ cpl.typename }}</a>
+                                </div>
+{#                                <div>{{ pl.productdesc }}</div>#}
+                            </figcaption>
+                    </figure>
+                    </div>
+                {% endfor %}
+
+    </div>
+
+{% endblock %}

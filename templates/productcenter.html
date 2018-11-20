@@ -1,0 +1,34 @@
+{% extends 'common/productcenterbase.html' %}
+{% block title %}产品中心{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="catorlog">
+        {% for tp in product_type_list %}
+            <div class="col-lg-2">
+                <a href="{{ tp.typeid }}" target="_self"><div class="btn btn-lg btn-primary">{{ tp.typename }}</div></a>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="clearfix"></div>
+        {% for tl in product_list %}
+            <div class="col-lg-4 col-md-6 col-sm-12 prodlist">
+            <figure>
+            <a href="#">
+                <img src="{{ MEDIA_URL }}{{ tl.image }}" alt="{{ tl.productdesc }}">
+            </a>
+            <figcaption>
+                <div class="productname"><a href="{% url 'productdetailv2' typeid=tl.typeid productcode=tl.productcode %}"> {{ tl.productname }}</a></div>
+                <div class="size"><p>规格：{{ tl.size }}</p></div>
+                <div class="price"><p>价格：￥<span style="color: red; font-weight: bold; font-size: 18px">{{ tl.price }}</span>/{{ tl.unit }}</p></div>
+
+            </figcaption>
+            </figure>
+            </div>
+
+
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}

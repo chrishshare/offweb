@@ -1,0 +1,66 @@
+{% extends 'common/base.html' %}
+
+{% block title %}关于品牌{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+    <br><br><br>
+   <div class="aboutbrand">
+        <h3>企业简介</h3>
+       <div>
+           {% for ta in aboutbrand %}
+               {{ ta.title|safe }}
+           {% endfor %}
+       </div>
+
+
+   </div>
+
+    <div class="rongyu">
+        <div>
+            <span><img src="{{ MEDIA_URL }}images/rongyu.png"> </span>
+            <p>福建名牌产品</p>
+        </div>
+
+        <div>
+            <span><img src="{{ MEDIA_URL }}images/dianzan.png"> </span>
+            <p>工程建设推荐产品</p>
+        </div>
+
+        <div>
+            <span><img src="{{ MEDIA_URL }}images/zhuanli.png"> </span>
+            <p>80多个国家专利</p>
+        </div>
+    </div>
+
+    <div class="honor">
+        <h3>品牌荣誉</h3>
+       {% for hl in honor_list %}
+           <div class="col-lg-3 col-md-6 col-sm-12">
+            <figure>
+                <img src="{{ MEDIA_URL }}{{ hl.honorimage }}">
+            <figcaption>
+                <div><span>{{ hl.honorname }}</span></div>
+            </figcaption>
+            </figure>
+           </div>
+       {% endfor %}
+    <div class="clearfix"></div>
+   </div>
+
+    <div class="culture">
+        <h3>企业文化</h3>
+       {% for cl in culture_list %}
+           <div class="col-lg-4 culture-list">
+               <div><span>{{ cl.title }}</span></div>
+               <div><span>{{ cl.content }}</span></div>
+           </div>
+
+       {% endfor %}
+    <div class="clearfix"></div>
+   </div>
+    </div>
+
+
+{% endblock %}

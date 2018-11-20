@@ -1,0 +1,43 @@
+{% load staticfiles %}
+
+<header class="header">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                    <span class="sr-only">导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'index' %}"><span>吉安国达陶瓷</span></a>
+            </div>
+
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="nav navbar-nav menu">
+
+
+                    {% for ml in menu_list_l %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                {{ ml.menuname }}<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% for cml in ml.childmenu %}
+                                    <li><a href="{{ cml.linkaddr }}">{{ cml.menuname }}</a></li>
+                                {% endfor %}
+
+
+                            </ul>
+                        </li>
+
+                    {% endfor %}
+{#                    <li><a href="#">联系我</a> </li>#}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+

@@ -1,0 +1,57 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{% block title %}{% endblock %}</title>
+
+    {#加载css#}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/customer.css' %}">
+
+    <script src="{% static 'jquery/jquery-3.3.1.min.js' %}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+            });
+        })
+    </script>
+    <script src="{% static 'bootstrap/js/gdjp.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+{#导航#}
+{% include 'common/nav.html' %}
+
+
+{#页面内容部分#}
+
+{% block content %}{% endblock %}
+
+
+{#页面底部#}
+{% include 'common/footer.html' %}
+{% include 'common/qq.html' %}
+
+{#<section class="side-bar active">#}
+{#    <div class="QQ">#}
+{#        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=208161327&site=qq&menu=yes"><img border="0"#}
+{#                                                                                                  src="http://wpa.qq.com/pa?p=2:208161327:52"#}
+{#                                                                                                  alt="联系客服"#}
+{#                                                                                                  title="联系客服"/>联系客服</a>#}
+{#    </div>#}
+{#    <div class="QQ">#}
+{#        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=204693907&site=qq&menu=yes"><img border="0"#}
+{#                                                                                                  src="http://wpa.qq.com/pa?p=2:204693907:52"#}
+{#                                                                                                  alt="联系客服"#}
+{#                                                                                                  title="联系客服"/>联系客服</a>#}
+{#    </div>#}
+{#    <div class="top">#}
+{#        <a href="javascript:scroll(0,0)"><img src="{{ MEDIA_URL }}images/aui-icon-top.png"> </a>#}
+{#    </div>#}
+{#</section>#}
+</body>
+</html>

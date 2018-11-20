@@ -1,0 +1,17 @@
+{% extends 'common/base.html' %}
+{% block title %}产品详情{% endblock %}
+{% block content %}
+    <div class="container">
+    {% for dl in  detail_list%}
+        <div class="detail">
+        <figure>
+            <img src="{{ MEDIA_URL }}{{ dl.image }}">
+            <figcaption>
+                <div>{{ dl.image_desc }}</div>
+            </figcaption>
+        </figure>
+        </div>
+
+    {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+<footer class="container">
+    <div class="row footer-menu"></div>
+    <div class="clearfix"></div>
+            <div class="link">
+                <h2>友情链接</h2>
+                <ul>
+                    {% for fl in link_list %}
+                        <li><a href="{{ fl.address }}" target="_blank">{{ fl.name }}</a> |</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+    <div class="copyright"><p>Copyright © 吉安国达陶瓷专卖店 | 赣ICP备18013786号-1</p></div>
+</footer>
+
