@@ -108,7 +108,7 @@ function createFooter(content){
      for(let i=0;i<bodyLength;i++){
          let outerdiv = $('<div class="col-lg-2 col-md-4 col-sm-6 footdiv"></div>');
          $('.footer-menu').append(outerdiv);
-         let vh2 = $('<h2></h2>');
+         let vh2 = $('<h3></h3>');
          vh2.text(content.body[i].menuname);
          $(outerdiv).append(vh2);
          let vhr = $('<hr>');
@@ -116,9 +116,12 @@ function createFooter(content){
          let vul = $('<ul></ul>');
          $('.footdiv').append(vul);
          for(let j = 0; j< content.body[i].childmenu.length; j++){
-             let vli = $('<li></li>')
-             $(vli).text(content.body[i].childmenu[j].menuname)
+             let vli = $('<li></li>');
              $(vul).append(vli)
+             let va = $('<a target="_blank" style="font-size: 16px"></a>');
+             $(va).attr('href',content.body[i].childmenu[j].link)
+             $(va).text(content.body[i].childmenu[j].menuname)
+             $(vli).append(va)
          }
      }
 

@@ -4,9 +4,7 @@
     <div class="container">
         <div class="catorlog">
         {% for tp in product_type_list %}
-            <div class="col-lg-2">
-                <a href="{{ tp.typeid }}" target="_self"><div class="btn btn-lg btn-primary">{{ tp.typename }}</div></a>
-            </div>
+                <a href="{{ tp.typeid }}" target="_self"><div class="btn btn-lg btn-default">{{ tp.typename }}</div></a>
         {% endfor %}
         </div>
         <div class="clearfix"></div>

@@ -4,7 +4,7 @@
 
 
 {% block content %}
-    <div class="container">
+    <div class="container aboutimc">
     <br><br><br>
    <div class="aboutbrand">
         <h3>企业简介</h3>
@@ -53,8 +53,8 @@
         <h3>企业文化</h3>
        {% for cl in culture_list %}
            <div class="col-lg-4 culture-list">
-               <div><span>{{ cl.title }}</span></div>
-               <div><span>{{ cl.content }}</span></div>
+               <div class="culture-title"><span>{{ cl.title }}</span></div>
+               <div class="culture-text"><span>{{ cl.content }}</span></div>
            </div>
 
        {% endfor %}

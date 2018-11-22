@@ -66,6 +66,7 @@ def footer_view(request):
 def culture_view(request):
     menu_list_l = menu_list()
     aboutbrand = AboutCmic.objects.all().values('title')
+    link_list = query_friendly_link()
     honor_list = Honor.objects.all().values('honorname', 'honorimage', 'sortorder').order_by('sortorder')
     culture_list = Culture.objects.all().values('title', 'content', 'sortorder').order_by('sortorder')
     print(aboutbrand, honor_list, culture_list)
