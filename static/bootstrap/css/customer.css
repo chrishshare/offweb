@@ -75,6 +75,7 @@ figcaption {
 
 .prod-title > div {
     text-align: center;
+    padding: 2%;
 }
 
 ul li {
@@ -169,13 +170,13 @@ ul li {
     background-color: #000000;
     border: #ffffff 2px solid;
     border-radius: 10px;
-    opacity: 0.6;
     color: #ffffff;
 }
 
 .rongyu div {
     display: block;
     float: left;
+    text-align: center;
 
 }
 
@@ -227,6 +228,7 @@ ul li {
 .footer {
     background-color: #252525;
     color: #ffffff;
+    margin-top: 5%;
 }
 
 .footer a {
@@ -237,4 +239,12 @@ ul li {
     /*text-decoration: none;*/
     font-weight: bold;
     color: #ffffff;
+}
+
+hr {
+    clear: both;
+}
+
+.product-type {
+    background-image: url("../../../media/images/bg_01.jpg");
 }

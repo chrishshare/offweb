@@ -168,7 +168,7 @@ class Honor(models.Model):
 
 class Culture(models.Model):
     title = models.CharField(max_length=20, null=False, blank=False, verbose_name='文化标题')
-    content = models.CharField(max_length=20, null=False, blank=False, verbose_name='文化描述')
+    content = models.CharField(max_length=100, null=False, blank=False, verbose_name='文化描述')
     sortorder = models.IntegerField(null=False, blank=False, verbose_name='显示顺序')
 
     class Meta:
