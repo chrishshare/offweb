@@ -1,13 +1,30 @@
 <footer class="container">
     <div class="row footer-menu">
+        {% for mll in menu_list_l %}
+        <div class="col-lg-2 col-md-4 col-sm-6 footdiv">
+            <h3>{{ mll.menuname }}</h3>
+        {% for mllc in mll.childmenu %}
+            <ul>
+            <li>
+                <a href="{{ mllc.linkaddr }}" target="_self">{{ mllc.menuname }}</a>
+            </li>
+            </ul>
+
+        {% endfor %}
+        </div>
+    {% endfor %}
+        <div class="col-lg-3 col-md-3 col-sm-6 footdiv">
+            <h2>138000000</h2>
+        </div>
     </div>
+
 
     <div class="clearfix"></div>
         <div class="flink">
             <h3>友情链接</h3>
             <ul>
                 {% for fl in link_list %}
-                    <li><a href="{{ fl.address }}" target="_blank">{{ fl.name }}</a> |</li>
+                    <li><a href="{{ fl.linkaddr }}" target="_blank">{{ fl.name }}</a> |</li>
                 {% endfor %}
             </ul>
         </div>

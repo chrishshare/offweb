@@ -1,33 +1,6 @@
 $(function () {
-// menuList();
 bannerList('.home-ind', '.home-inner');
-    footerList();
 });
-
-function menuList() {
-    $.ajax({
-        type: 'post',
-        url: '/menu/',
-        success:function (data) {
-            $.each(JSON.parse(data), function (index, content) {
-                createMenu(content);
-            })
-        }
-    })
-}
-
-
-function createMenu(content) {
-    let menuroot = $('.menu');
-    for (let i = 0; i < content.body.length; i++){
-        let menuli = $('<li></li>');
-        menuroot.append(menuli);
-        let menua = $('<a></a>');
-        menua.attr("href", "#");
-        menua.text(content.body[i].menuname);
-        menuli.append(menua)
-    }
-}
 
 
 function bannerList(ind, inner) {
@@ -47,7 +20,7 @@ function bannerList(ind, inner) {
 function createBanner(ind, inner, content) {
     //创建元素，传入ind：操作顺序的class， inner：图片的class
     bodyLength = content.body.length;
-    console.log(bodyLength);
+    // console.log(bodyLength);
     for (let i = 0; i < bodyLength; i++){
         //添加元素到<ol class="carousel-indicators">
         let ind_li = $('<li data-target="#carousel"></li>');
@@ -85,47 +58,6 @@ function createBanner(ind, inner, content) {
 }
 
 
-function createPodBanner(ind, inner, content) {
-
-}
-
-function footerList() {
- $.ajax({
-        type: 'post',
-        url: '/menu/',
-        success:function (data) {
-            $.each(JSON.parse(data), function (index, content) {
-                console.log(content);
-                createFooter(content)
-            })
-        }
- })
-}
-
-
-function createFooter(content){
-     let bodyLength = content.body.length;
-     for(let i=0;i<bodyLength;i++){
-         let outerdiv = $('<div class="col-lg-2 col-md-4 col-sm-6 footdiv"></div>');
-         $('.footer-menu').append(outerdiv);
-         let vh2 = $('<h3></h3>');
-         vh2.text(content.body[i].menuname);
-         $(outerdiv).append(vh2);
-         let vhr = $('<hr>');
-         $(outerdiv).append(vhr);
-         let vul = $('<ul></ul>');
-         $('.footdiv').append(vul);
-         for(let j = 0; j< content.body[i].childmenu.length; j++){
-             let vli = $('<li></li>');
-             $(vul).append(vli)
-             let va = $('<a target="_blank" style="font-size: 16px"></a>');
-             $(va).attr('href',content.body[i].childmenu[j].link)
-             $(va).text(content.body[i].childmenu[j].menuname)
-             $(vli).append(va)
-         }
-     }
-
-}
 
 
 function backtop() {

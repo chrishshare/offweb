@@ -58,9 +58,9 @@ def product_detail_view_v2(request, **kwargs):
     return render(request, 'productdetail.html', locals())
 
 
-def footer_view(request):
-    link_list = query_friendly_link()
-    return render(request, 'common/footer.html', locals())
+# def footer_view(request):
+#     link_list = query_friendly_link()
+#     return render(request, 'common/footer.html', locals())
 
 
 def culture_view(request):

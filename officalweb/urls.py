@@ -23,7 +23,7 @@ urlpatterns = [
     path('prodtype/', views.product_type_view),
     path('prod/', views.product_list_view),
     path('productdetail/', views.product_detail_view),
-    path('footer/', views.footer_view),
+    # path('footer/', views.footer_view),
     path('productdetailv2/<str:typeid>/<str:productcode>/', views.product_detail_view_v2, name='productdetailv2'),
     path('prodcenter/<str:typeid>', views.product_center_view, name='prodcenter'),
     path('culture/', views.culture_view, name='culture'),
