@@ -10,9 +10,12 @@ header .logo{
     height: 100px;
 }
 
+
 .navbar-brand {
     margin: 0;
     padding: 0;
+    line-height: 50px;
+    padding-left: 6%;
 }
 
 .navbar-brand img {
@@ -82,6 +85,10 @@ ul li {
     list-style-type: none;
 }
 
+.flink ul{
+    padding-left: 0;
+}
+
 .flink  ul  li {
     display: inline;
     padding-right: 1%;
@@ -124,8 +131,13 @@ ul li {
 
 .catorlog {
     margin-top: 65px;
+    display: flex;
 }
-
+.catorlog a{
+    /*margin: 0 10%;*/
+    flex: 1;
+    text-align: center;
+}
 .detail {
     margin-top: 65px;
 }
@@ -171,12 +183,25 @@ ul li {
     border: #ffffff 2px solid;
     border-radius: 10px;
     color: #ffffff;
+    height: 180px;
+}
+
+.rongyu{
+    margin: 6% 0;
+}
+
+.rongyu:after{
+    content: '';
+    display: block;
+    overflow: hidden;
+    clear: both;
 }
 
 .rongyu div {
     display: block;
     float: left;
     text-align: center;
+    width: 33%;
 
 }
 
@@ -239,6 +264,20 @@ ul li {
     /*text-decoration: none;*/
     font-weight: bold;
     color: #ffffff;
+}
+
+.footdivtitle{
+    padding-bottom: 6px;
+    border-bottom: 2px solid;
+}
+
+.footdivSubtitle{
+    padding-left: 0;
+}
+
+.footdivSubtitle li{
+    margin: 10% 0;
+    font-size: 16px;
 }
 
 hr {

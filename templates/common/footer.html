@@ -2,16 +2,18 @@
     <div class="row footer-menu">
         {% for mll in menu_list_l %}
         <div class="col-lg-2 col-md-4 col-sm-6 footdiv">
-            <h3>{{ mll.menuname }}</h3>
-            <hr>
-        {% for mllc in mll.childmenu %}
-            <ul>
+            <h3>
+                <span class="footdivtitle">{{ mll.menuname }}</span>
+            </h3>
+        <ul class="footdivSubtitle">
+            {% for mllc in mll.childmenu %}
             <li>
                 <a href="{{ mllc.linkaddr }}" target="_self">{{ mllc.menuname }}</a>
             </li>
-            </ul>
 
         {% endfor %}
+        </ul>
+
         </div>
     {% endfor %}
         <div class="col-lg-3 col-md-3 col-sm-6 footdiv">
