@@ -10,6 +10,22 @@ header .logo{
     height: 100px;
 }
 
+#container{
+    padding: 20px 0;
+}
+
+#navbar-self{
+    margin-right: 5%;
+}
+
+#jumbotron-self{
+    padding-top: 0;
+    margin-top: -20px;
+}
+
+#menu{
+    font-size: 18px;
+}
 
 .navbar-brand {
     margin: 0;
@@ -179,11 +195,19 @@ ul li {
 }
 
 .culture-list {
-    background-color: #000000;
+    /*background-color: #666666;*/
+    background: linear-gradient(to bottom, #FAFAD2, #E1FFFF);
     border: #ffffff 2px solid;
-    border-radius: 10px;
-    color: #ffffff;
+    /*border-radius: 10px;*/
+    /*color: #ffffff;*/
     height: 180px;
+    transition: all 0.5s;
+}
+
+.culture-list:hover{
+    border-radius: 10px;
+    border: #00BFFF 2px solid;
+    transform: translateY(-4px);
 }
 
 .rongyu{
@@ -266,6 +290,10 @@ ul li {
     color: #ffffff;
 }
 
+.footdiv h2{
+    width: 272px;
+}
+
 .footdivtitle{
     padding-bottom: 6px;
     border-bottom: 2px solid;
@@ -287,3 +315,19 @@ hr {
 .product-type {
     background-image: url("../../../media/images/bg_01.jpg");
 }
+
+/*.navbar-default {*/
+    /*height: 20%;*/
+/*}*/
+
+/*.navbar-default > .container {*/
+    /*height: 100%;*/
+/*}*/
+
+/*.navbar-brand {*/
+    /*height: 100%;*/
+/*}*/
+
+/*.dropdown {*/
+    /*height: 100%;*/
+/*}*/

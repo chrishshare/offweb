@@ -69,7 +69,7 @@ def culture_view(request):
     link_list = query_friendly_link()
     honor_list = Honor.objects.all().values('honorname', 'honorimage', 'sortorder').order_by('sortorder')
     culture_list = Culture.objects.all().values('title', 'content', 'sortorder').order_by('sortorder')
-    print(aboutbrand, honor_list, culture_list)
+    # print(aboutbrand, honor_list, culture_list)
     return render(request, 'aboutbrand.html', locals())
 
 # 接口
@@ -105,7 +105,7 @@ def menu_list_view(request):
                 parent['childmenu'] = list(child_menu)
                 no_child_menu_list.append(parent)
             # no_child_menu_list.append(no_child_menu)
-            print(no_child_menu_list)
+            # print(no_child_menu_list)
             json_data = queryset_to_json(no_child_menu_list, resultinfo=SUCCESS)
 
             # no_child_menu = Menus.objects.filter(status__dict_id='normal', has_child=0).values(
