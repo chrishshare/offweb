@@ -18,7 +18,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 with open('seckey/SECRET_KEY.txt') as f:
     SECRET_KEY = f.read().strip()
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*', ]
 
@@ -72,17 +72,27 @@ TEMPLATES = [
 WSGI_APPLICATION = 'offweb.wsgi.application'
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'gdjp',
+#         'USER': 'gdjp',
+#         'PASSWORD': 'Zhsy08241128',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'gdjp',
         'USER': 'gdjp',
-        'PASSWORD': 'Zhsy08241128',
+        'PASSWORD': 'Jaguoda.com2018!',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
