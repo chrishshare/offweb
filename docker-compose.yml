@@ -1,0 +1,25 @@
+version: '3'
+services:
+        db:
+                image: mysql
+                restart: always
+                build: 
+                        context: ./mysql
+                        dockerfile: Dockerfile
+#                command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --init-connect='SET NAMES utf8mb4;' --innodb-flush-log-at-trx-commit=0
+                expose:
+                        - "3306"
+                volumes:
+                        - ./dockermysql:/var/lib/mysql:rw
+                environment:
+                        - MYSQL_DATABASE=gdjp
+                        - MYSQL_ROOT_PASSWORD=Jaguoda.com2018!
+        web:
+                build: .
+                command: python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic && python manage.py runserver 0.0.0.0:9001 --insecure
+                volumes:
+                        - .:/leartd
+                ports:
+                        - "8089:9000"
+                depends_on:
+                        - db
