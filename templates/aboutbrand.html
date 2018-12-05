@@ -1,4 +1,5 @@
 {% extends 'common/base.html' %}
+{% load staticfiles %}
 
 {% block title %}关于品牌{% endblock %}
 
@@ -17,17 +18,17 @@
 
     <div class="rongyu">
         <div>
-            <img src="{{ MEDIA_URL }}images/rongyu.png">
+            <img src="{% static "images/logo/rongyu.png"%}">
             <p>福建名牌产品</p>
         </div>
 
         <div>
-            <img src="{{ MEDIA_URL }}images/dianzan.png">
+            <img src="{% static "images/logo/dianzan.png"%}">
             <p>工程建设推荐产品</p>
         </div>
 
         <div>
-            <img src="{{ MEDIA_URL }}images/zhuanli.png">
+            <img src="{% static "images/logo/zhuanli.png"%}">
             <p>80多个国家专利</p>
         </div>
     </div>
