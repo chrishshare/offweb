@@ -1,4 +1,5 @@
 {% extends 'common/base.html' %}
+{% load staticfiles %}
 
 {% block title %}首页{% endblock %}
 
@@ -13,7 +14,7 @@
     <div class="container">
         <div class="prod-title">
             <div>
-                <img src="{{ MEDIA_URL }}images/t1.png">
+                <img src="{% static "images/prod/t1.png"  %}">
             </div>
             <div class="row">
                 {% for pl in new_product_list %}
@@ -37,7 +38,7 @@
 {#    产品系列  #}
         <div class="prod-title product-type">
             <div>
-                <img src="{{ MEDIA_URL }}images/t2.png">
+                <img src="{% static "images/prod/t2.png"  %}">
             </div>
             <div class="row">
                 {% for cpl in cat_product_list %}
