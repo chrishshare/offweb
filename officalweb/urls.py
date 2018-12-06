@@ -26,9 +26,9 @@ urlpatterns = [
     path('culture/', views.culture_view, name='culture'),
 
     #     api
-    path('menu/', views.menu_list_view),
-    path('banner/', views.banner_list_view),
-    path('prodtype/', views.product_type_view),
+    path('menu/', views.menu_list_view, name='menu-api'),
+    path('banner/', views.banner_list_view, name='banner-api'),
+    path('prodtype/', views.product_type_view, name='prodtype-api'),
     path('prod/', views.product_list_view),
 
 ]
