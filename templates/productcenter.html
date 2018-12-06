@@ -16,9 +16,10 @@
             </a>
             <figcaption>
                 <div class="productname"><a href="{% url 'productdetailv2' typeid=tl.typeid productcode=tl.productcode %}"> {{ tl.productname }}</a></div>
-                <div class="size"><p>规格：{{ tl.size }}</p></div>
-                <div class="price"><p>价格：￥<span style="color: red; font-weight: bold; font-size: 18px">{{ tl.price }}</span>/{{ tl.unit }}</p></div>
-
+                {% if tl.size and tl.price and tl.unit %}
+                    <div class="size"><p>规格：{{ tl.size }}</p></div>
+                    <div class="price"><p>价格：￥<span style="color: red; font-weight: bold; font-size: 18px">{{ tl.price }}</span>/{{ tl.unit }}</p></div>
+                {% endif %}
             </figcaption>
             </figure>
             </div>
