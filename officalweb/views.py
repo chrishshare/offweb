@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from officalweb.models import Menus
 from django.db.models import F
 from officalweb.serialize2json import queryset_to_json
 from django.http import HttpResponse
@@ -11,8 +10,7 @@ from officalweb.models import ProductType
 from officalweb.models import Menus
 from officalweb.models import AboutCmic, Honor, Culture
 import json
-from officalweb.funcs import query_product_detail, query_friendly_link, query_product_cat, query_new_product, \
-    query_menu_list, query_product_list_v2, menu_list
+from officalweb.funcs import query_product_detail, query_friendly_link, query_product_cat, query_new_product, query_product_list_v2, menu_list
 
 SUCCESS = [{"retcode": 0, "retmsg": "successed!"}]
 
@@ -58,11 +56,6 @@ def product_detail_view_v2(request, **kwargs):
     return render(request, 'productdetail.html', locals())
 
 
-# def footer_view(request):
-#     link_list = query_friendly_link()
-#     return render(request, 'common/footer.html', locals())
-
-
 def culture_view(request):
     menu_list_l = menu_list()
     aboutbrand = AboutCmic.objects.all().values('title')
@@ -83,40 +76,19 @@ def menu_list_view(request):
         try:
             # 没有子菜单部分
 
-            no_child_menu = Menus.objects.filter(status__dict_id='normal', parentid__menu_id__isnull=True).values(
+            no_child = Menus.objects.filter(status__dict_id='normal', parentid__menu_id__isnull=True).values(
                 menuid=F('menu_id'),
-                menuname=F('menu_name'))
-            # json_data = queryset_to_json(querylist=no_child_menu, resultinfo=SUCCESS)
-
-            # 有子菜单的部分
-            has_child_menu = Menus.objects.filter(status__dict_id='normal', parentid__menu_id__isnull=False).values(
-                menuid=F('parentid__menu_id'),
-                menuname=F('parentid__menu_name')).order_by('parentid__menu_id').distinct()
-
-            no_child_menu_list = []
-
-            # 父子菜单合并，生成字典
-            for i in range(len(has_child_menu)):
-                parent = has_child_menu[i]
+                menuname=F('menu_name'), order=F('sort_order')).order_by('sort_order')
+            child_list = []
+            for i in range(len(no_child)):
+                parent = no_child[i]
                 parent_menu_id = parent.get('menuid')
                 child_menu = Menus.objects.filter(status__dict_id='normal', parentid__menu_id=parent_menu_id).values(
                     menuid=F('menu_id'),
-                    menuname=F('menu_name'))
+                    menuname=F('menu_name'), linkaddr=F('link'), order=F('sort_order')).order_by('sort_order')
                 parent['childmenu'] = list(child_menu)
-                no_child_menu_list.append(parent)
-            # no_child_menu_list.append(no_child_menu)
-            # print(no_child_menu_list)
+                child_list.append(parent)
             json_data = queryset_to_json(no_child_menu_list, resultinfo=SUCCESS)
-
-            # no_child_menu = Menus.objects.filter(status__dict_id='normal', has_child=0).values(
-            #     menuid=F('menu_id'),
-            #     menuname=F('menu_name'))
-            #
-            # has_child_menu = Menus.objects.filter(status__dict_id='normal', has_child=1).values(
-            #     menuid=F('parentid__menu_id'),
-            #     menuname=F('parentid__menu_name')).order_by('parentid__menu_id').distinct()
-
-            # 有子菜单部分
             return HttpResponse(json_data)
         except Exception as e:
             json_data = queryset_to_json(querylist='', resultinfo=[{"retcode": -1, "retmsg": e}])
