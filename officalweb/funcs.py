@@ -61,7 +61,7 @@ def query_product_cat():
     :return:
     """
     product_cat_list = ProductType.objects.all().values('typeid', 'typename', 'image', 'order').order_by('order')
-    print(product_cat_list)
+    # print(product_cat_list)
     return product_cat_list
 
 
@@ -75,54 +75,21 @@ def query_friendly_link():
 
 
 def menu_list():
-
-    # 有子菜单的部分
-    has_child_menu = Menus.objects.filter(status__dict_id='normal', parentid__menu_id__isnull=False).values(
-        menuid=F('parentid__menu_id'),
-        menuname=F('parentid__menu_name')).order_by('parentid__menu_id').distinct()
-
-    no_child_menu_list = []
-
-    # 父子菜单合并，生成字典
-    for i in range(len(has_child_menu)):
-        parent = has_child_menu[i]
-        parent_menu_id = parent.get('menuid')
-        child_menu = Menus.objects.filter(status__dict_id='normal', parentid__menu_id=parent_menu_id).values(
-            menuid=F('menu_id'),
-            menuname=F('menu_name'), linkaddr=F('link'))
-        parent['childmenu'] = list(child_menu)
-        no_child_menu_list.append(parent)
-    return no_child_menu_list
-
-
-def query_menu_list():
-    """
-    查询菜单列表
-    :return:
-    """
-    no_child_menu = Menus.objects.filter(status__dict_id='normal', parentid__menu_id__isnull=True).values(
+    no_child = Menus.objects.filter(status__dict_id='normal', parentid__menu_id__isnull=True).values(
         menuid=F('menu_id'),
-        menuname=F('menu_name'))
+        menuname=F('menu_name'), order=F('sort_order')).order_by('sort_order')
+    child_list = []
 
-    # 有子菜单的部分
-    has_child_menu = Menus.objects.filter(status__dict_id='normal', parentid__menu_id__isnull=False).values(
-        menuid=F('parentid__menu_id'),
-        menuname=F('parentid__menu_name')).order_by('parentid__menu_id').distinct()
-
-    no_child_menu_list = []
-
-    # 父子菜单合并，生成字典
-    for i in range(len(has_child_menu)):
-        parent = has_child_menu[i]
+    for i in range(len(no_child)):
+        parent = no_child[i]
         parent_menu_id = parent.get('menuid')
         child_menu = Menus.objects.filter(status__dict_id='normal', parentid__menu_id=parent_menu_id).values(
             menuid=F('menu_id'),
-            menuname=F('menu_name'))
+            menuname=F('menu_name'), linkaddr=F('link'), order=F('sort_order')).order_by('sort_order')
         parent['childmenu'] = list(child_menu)
-        no_child_menu_list.append(parent)
-    # no_child_menu_list.append(no_child_menu)
-    print(no_child_menu_list)
-    return no_child_menu_list
+        child_list.append(parent)
+    print(child_list)
+    return child_list
 
 
 def query_product_detail(typeid, productcode):
