@@ -25,6 +25,7 @@ urlpatterns = [
     path('prodcenter/<str:typeid>', views.product_center_view, name='prodcenter'),
     path('culture/', views.culture_view, name='culture'),
     path('aboutus/', views.about_us_view, name='aboutus'),
+    path('case/', views.projectcase_view, name='projectcase'),
 
     #     api
     path('menu/', views.menu_list_view, name='menu-api'),

@@ -83,6 +83,19 @@ def about_us_view(request):
     return render(request, 'aboutus.html', locals())
 
 
+def projectcase_view(request):
+    """
+    查询产品分类列表，新的直接渲染
+    :param request:
+    :param kwargs:
+    :return:
+    """
+    product_type_list = query_product_cat()
+    link_list = query_friendly_link()
+    menu_list_l = menu_list()
+    return render(request, 'projectcase.html', locals())
+
+
 # 接口
 def menu_list_view(request):
     """
