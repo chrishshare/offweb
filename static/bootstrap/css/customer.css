@@ -163,7 +163,7 @@ ul li {
 }
 
 .side-bar {
-    width: 6%;
+    width: 4%;
     /*height: 64px;*/
     position: fixed;
     bottom: 10%;
@@ -341,3 +341,21 @@ hr {
 .item img {
     width: 100%;
 }
+
+.aboutus {
+    background: url("/static/images/bg/contactus.jpg")  repeat-x 0 20%;
+    width: 100%;
+    height: 400px;
+    text-align: center;
+    background-size: cover;
+}
+
+.aboutus div {
+    height: 30%;
+    display: block;
+}
+
+.aboutus div h3{
+    line-height: 100%;
+}
+

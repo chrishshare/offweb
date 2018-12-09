@@ -10,6 +10,7 @@ from officalweb.models import FrendlyLink
 from officalweb.models import AboutCmic
 from officalweb.models import Honor
 from officalweb.models import Culture
+from officalweb.models import ContactInfo
 
 class ShowDictItem(admin.ModelAdmin):
     list_display = ('dict_id', 'dict_name', 'group_id', 'group_name')
@@ -71,4 +72,6 @@ admin.site.register(Culture)
 admin.site.register(ProductType)
 
 admin.site.register(FrendlyLink)
+
+admin.site.register(ContactInfo)
 

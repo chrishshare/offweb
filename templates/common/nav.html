@@ -19,16 +19,21 @@
 
 
                     {% for ml in menu_list_l %}
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                {{ ml.menuname }}<span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                {% for cml in ml.childmenu %}
-                                    <li><a href="{{ cml.linkaddr }}">{{ cml.menuname }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </li>
+                        {% if ml.childmenu|length_is:'0' %}
+                            <li><a href="{{ ml.linkaddr }}">{{ ml.menuname }}</a></li>
+                        {% else %}
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    {{ ml.menuname }}<span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% for cml in ml.childmenu %}
+                                        <li><a href="{{ cml.linkaddr }}">{{ cml.menuname }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endif %}
 
                     {% endfor %}
 {#                    <li><a href="#">联系我</a> </li>#}

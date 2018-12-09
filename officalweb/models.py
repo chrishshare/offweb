@@ -177,3 +177,17 @@ class Culture(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class ContactInfo(models.Model):
+    name = models.CharField(max_length=20, null=False, blank=False, verbose_name='项目名称')
+    icon = models.ImageField(upload_to='icon', verbose_name='小图标')
+    content = models.CharField(max_length=50, verbose_name='项目值')
+    sortorder = models.IntegerField(verbose_name='显示顺序')
+
+    class Meta:
+        verbose_name = '联系信息'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name

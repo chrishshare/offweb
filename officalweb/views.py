@@ -8,7 +8,7 @@ from officalweb.models import ProductList
 from officalweb.models import ProductDetail
 from officalweb.models import ProductType
 from officalweb.models import Menus
-from officalweb.models import AboutCmic, Honor, Culture
+from officalweb.models import AboutCmic, Honor, Culture, ContactInfo
 import json
 from officalweb.funcs import query_product_detail, query_friendly_link, query_product_cat, query_new_product, query_product_list_v2, menu_list
 
@@ -64,6 +64,24 @@ def culture_view(request):
     culture_list = Culture.objects.all().values('title', 'content', 'sortorder').order_by('sortorder')
     # print(aboutbrand, honor_list, culture_list)
     return render(request, 'aboutbrand.html', locals())
+
+
+def about_us_view(request):
+    """
+    查询产品分类列表，新的直接渲染
+    :param request:
+    :param kwargs:
+    :return:
+    """
+    product_type_list = query_product_cat()
+    link_list = query_friendly_link()
+    menu_list_l = menu_list()
+
+    # contact info
+    contact_info = ContactInfo.objects.all().values('name', 'icon', 'content', 'sortorder').order_by('sortorder')
+
+    return render(request, 'aboutus.html', locals())
+
 
 # 接口
 def menu_list_view(request):

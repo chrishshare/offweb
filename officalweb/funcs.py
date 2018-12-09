@@ -77,7 +77,7 @@ def query_friendly_link():
 def menu_list():
     no_child = Menus.objects.filter(status__dict_id='normal', parentid__menu_id__isnull=True).values(
         menuid=F('menu_id'),
-        menuname=F('menu_name'), order=F('sort_order')).order_by('sort_order')
+        menuname=F('menu_name'), linkaddr=F('link'), order=F('sort_order')).order_by('sort_order')
     child_list = []
 
     for i in range(len(no_child)):
